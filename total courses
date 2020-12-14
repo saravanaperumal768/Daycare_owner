@@ -1,0 +1,70 @@
+total courses
+
+<?php
+                                            $sql = "SELECT * FROM tbl_products";
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                            ?>                                    
+                                            <div class="widget-numbers text-white"><span><?php echo $result->num_rows; ?></span></div>
+                                            <?php } else {?>
+                                            <div class="widget-numbers text-white"><span>0</span></div>
+                                        <?php } ?>
+
+
+                                        no.of students
+
+                                          <?php
+                                        $sql = "SELECT * FROM tbl_customers";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                        ?>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span><?php echo $result->num_rows; ?></span></div>
+                                        </div>
+                                        <?php } else {?>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>0</span></div>
+                                        </div>
+                                           <?php } ?> 
+
+
+                                           sucessfully selected
+
+                                            <?php
+                                        $sql = "SELECT * FROM tbl_orders";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                        ?>
+
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span><?php echo $result->num_rows;?></span></div>
+                                        </div>
+                                        <?php } else {?>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>0</span></div>
+                                        </div>
+                                         <?php } ?>    
+
+
+                                         customer details
+
+                                         <?php                    
+$sql = "SELECT * FROM tbl_customers ORDER BY customer_id DESC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {     
+$sno=1;               
+while($row = $result->fetch_assoc()) {
+    $name =  $row["customer_name"]; 
+    $mbl =  $row["customer_mbl"]; 
+?>    
+
+                <tr>
+                    <td class="text-center text-muted"><?php echo $sno;?></td>
+                    <td class="text-center text-muted"><?php echo $name;?></td>
+                    <td class="text-center"><?php echo $mbl;?></td>
+                </tr>
+            <?php $sno++; }} ?>
